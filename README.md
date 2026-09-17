@@ -1,5 +1,6 @@
 # Interactive Intersection
 ## Current state:
+All cars wired, white car and police car fire after either is clicked, ignoring intersection status. Lights are not wired up or tied to any of the events. 9/17/26
 <img width="1278" height="1276" alt="2026-09-17 17 54 27" src="https://github.com/user-attachments/assets/3448794f-9e56-42a5-b9a6-f45f470618d5" />
 
 ## What is it?
