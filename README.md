@@ -1,4 +1,6 @@
 # Interactive Intersection
+## Current state:
+<img width="1278" height="1276" alt="2026-09-17 17 54 27" src="https://github.com/user-attachments/assets/eeb398ca-beb8-4d0e-b3e4-5f41991aa4c0" />
 
 ## What is it?
 
