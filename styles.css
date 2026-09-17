@@ -1,0 +1,155 @@
+h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+#backdrop {
+    background-color: darkgreen;
+    max-width: 40rem;
+    height: 40rem;
+    position: relative;
+    overflow:hidden;
+}
+
+#roadvert {
+    z-index: 0;
+    background-color: #474747;
+    width: 4rem;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#roadhorz {
+    z-index: 0;
+    background-color: #474747;
+    height: 4rem;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);    
+}
+
+/* Stoplight */
+#stoplight1,#stoplight2,#stoplight3,#stoplight4{
+    z-index: 1;
+    background: #000;
+    max-width: 1rem;
+    max-height:3.25rem;
+    padding: .3rem;
+    border-radius: 4px;
+    position: absolute;
+    /*whitecar light*/
+     &#stoplight1 {
+        right:42%;
+        bottom:43.55%;
+        transform: rotate(-0.25turn) translate(40%, 40%);
+    }
+    /*police light*/
+    &#stoplight2 {
+        left:50%;
+        bottom:48%;
+        transform: translate(-50%, 130%);
+    }
+    /*redcar light*/
+    &#stoplight3 {
+        left:50.5%;
+        top:49.3%;
+        transform: rotate(0.25turn) translate(-100%, 130%);
+        
+    }
+    &#stoplight4 {
+        left:46%;
+        top:21%;
+        transform: rotate(0.5turn) translate(-55%, -150%);
+        
+    }
+}
+.stop {
+    z-index: 2;
+    background: red;
+    padding: .5rem;
+    margin-bottom:.1rem;
+    border-radius:100%;
+}
+.slow {
+    z-index: 2;
+    background: yellow;
+    padding: .5rem;
+    margin-bottom:.1rem;
+    border-radius:100%;
+}
+.go {
+    z-index: 2;
+    background: green;
+    padding: .5rem;
+    margin-bottom:.1rem;
+    border-radius:100%;
+}
+
+/* white car */
+#car1 {
+    z-index: 1;
+    max-height: 4rem;
+    position: absolute;
+
+    right: 2rem;
+    top: 50%;
+
+    transform: translateY(-50%) rotate(270deg);
+    transition: right 1200ms ease;
+}
+#car1.car1move {
+    right: calc(100% - 2rem);
+}
+#car1.car1reset {
+   right:-6rem;
+   transition:none;
+}
+
+/* police car */
+#car2 {
+    z-index: 1;
+    max-height: 4rem;
+    position: absolute;
+    
+    left: 50%;
+    bottom: 2rem;
+    
+    transform: translateX(-50%) rotate(0deg);
+    transition: bottom 1200ms ease;
+}
+#car2.car2move {
+    bottom: calc(100% - 2rem);
+}
+
+/* red car */
+#car3 {
+    z-index: 1;
+    max-height: 4rem;
+    position: absolute;
+
+    left: 2rem;
+    top: 50%;
+
+    transform: translateY(-50%) rotate(90deg);
+    transition: left 1500ms ease;
+}
+#car3.car3move {
+    left: calc(100% - 2rem);
+}
+
+/* taxi car */
+#car4 {
+    z-index: 1;
+    max-height: 4rem;
+    position: absolute;
+
+    left: 50%;
+    top: 2rem;
+
+    transform: translateX(-50%) rotate(180deg);
+    transition: top 1500ms ease;
+}
+#car4.car4move {
+    top: calc(100% - 2rem);
+}
