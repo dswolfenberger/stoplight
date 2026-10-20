@@ -3,10 +3,11 @@ h1 {
 }
 #backdrop {
     background-color: darkgreen;
+    width: 100%;
     max-width: 40rem;
-    height: 40rem;
+    aspect-ratio: 1 / 1;
     position: relative;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 #roadvert {

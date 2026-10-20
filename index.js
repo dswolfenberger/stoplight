@@ -57,9 +57,9 @@ class Car {
         this.#element.style.transition = "all 1500ms ease"
     }
 
-    setPosition(x,y) {
-        this.#element.style.left = x + "px"
-        this.#element.style.top = y + "px"
+    setPosition(x, y) {
+        this.#element.style.left = x + "%";
+        this.#element.style.top = y + "%";
     }
 
     setRotation(degrees) {
@@ -84,42 +84,46 @@ class Car {
 }
 const backdrop = document.getElementById("backdrop")
 
+/* White Car */
 const whiteCar = new Car("car1", backdrop)
-whiteCar.setPosition(585, 265)
 whiteCar.setRotation(270)
+whiteCar.setPosition(91.4, 41.4);
 
 whiteCar.doThisWhenClicked(() => {
-    whiteCar.setPosition(-100, 265)
-    whiteCar.moveAfterDelay(585, 265, 2500); 
-    whiteCar.resetTransition()
+    whiteCar.setPosition(-15.6, 41.4);
+    whiteCar.moveAfterDelay(91.4, 41.4, 2500);
+    whiteCar.resetTransition();
 })
 
+/* Police Car */
 const policeCar = new Car("car2", backdrop)
-policeCar.setPosition(328, 570)
 policeCar.setRotation(0)
+policeCar.setPosition(51.25, 89.1);
 
 policeCar.doThisWhenClicked(() => {
-    policeCar.setPosition(328, -100) 
-    policeCar.moveAfterDelay(328, 570, 2500)
-    policeCar.resetTransition()
-})
+    policeCar.setPosition(51.25, -15.6);
+    policeCar.moveAfterDelay(51.25, 89.1, 2500);
+    policeCar.resetTransition();
+});
 
+/* Red Car */
 const redCar = new Car("car3", backdrop)
-redCar.setPosition(20, 315)
 redCar.setRotation(-270)
+redCar.setPosition(3.1, 49.2);
 
 redCar.doThisWhenClicked(() => {
-    redCar.setPosition(700, 315)
-    redCar.moveAfterDelay(20, 315, 2500)
-    redCar.resetTransition()
+    redCar.setPosition(109.4, 49.2);
+    redCar.moveAfterDelay(3.1, 49.2, 2500);
+    redCar.resetTransition();
 })
 
+/* Taxi Car */
 const taxiCar = new Car("car4", backdrop)
-taxiCar.setPosition(275, 10)
 taxiCar.setRotation(180)
+taxiCar.setPosition(43, 1.6);
 
 taxiCar.doThisWhenClicked(() => {
-    taxiCar.setPosition(275, 720)
-    taxiCar.moveAfterDelay(275, 10, 2500)
-    taxiCar.resetTransition()
+    taxiCar.setPosition(43, 112.5);
+    taxiCar.moveAfterDelay(43, 1.6, 2500);
+    taxiCar.resetTransition();
 })
