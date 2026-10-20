@@ -1,7 +1,6 @@
 h1 {
     font-family: 'Roboto', sans-serif;
 }
-
 #backdrop {
     background-color: darkgreen;
     max-width: 40rem;
@@ -13,55 +12,65 @@ h1 {
 #roadvert {
     z-index: 0;
     background-color: #474747;
-    width: 4rem;
+    width: 5.8rem;
     height: 100%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    background-image: 
+        linear-gradient(to bottom, transparent 42.75%, #474747 42.75%, #474747 57.25%, transparent 57.25%),
+        linear-gradient(to right, transparent 46%, #FFD700 46%, #FFD700 48%, transparent 48%, transparent 52%, #FFD700 52%, #FFD700 54%, transparent 54%);
 }
+
 #roadhorz {
     z-index: 0;
     background-color: #474747;
-    height: 4rem;
+    height: 5.8rem;
     width: 100%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);    
+    background-image: 
+        linear-gradient(to right, transparent 42.75%, #474747 42.75%, #474747 57.25%, transparent 57.25%),
+        linear-gradient(to bottom, transparent 46%, #FFD700 46%, #FFD700 48%, transparent 48%, transparent 52%, #FFD700 52%, #FFD700 54%, transparent 54%);
 }
 
 /* Stoplight */
 #stoplight1,#stoplight2,#stoplight3,#stoplight4{
-    z-index: 1;
+    z-index: 5;
     background: #000;
     max-width: 1rem;
     max-height:3.25rem;
     padding: .3rem;
     border-radius: 4px;
     position: absolute;
+
     /*whitecar light*/
      &#stoplight1 {
         right:42%;
         bottom:43.55%;
         transform: rotate(-0.25turn) translate(40%, 40%);
     }
+
     /*police light*/
     &#stoplight2 {
         left:50%;
         bottom:48%;
         transform: translate(-50%, 130%);
     }
+
     /*redcar light*/
     &#stoplight3 {
-        left:50.5%;
-        top:49.3%;
-        transform: rotate(0.25turn) translate(-100%, 130%);
-        
+        left:51%;
+        top:49%;
+        transform: rotate(0.25turn) translate(-100%, 130%); 
     }
+
+    /*taxicar light*/
     &#stoplight4 {
-        left:46%;
+        left:45%;
         top:21%;
-        transform: rotate(0.5turn) translate(-55%, -150%);
-        
+        transform: rotate(0.5turn) translate(-55%, -150%); 
     }
 }
 .stop {
@@ -86,70 +95,3 @@ h1 {
     border-radius:100%;
 }
 
-/* white car */
-#car1 {
-    z-index: 1;
-    max-height: 4rem;
-    position: absolute;
-
-    right: 2rem;
-    top: 50%;
-
-    transform: translateY(-50%) rotate(270deg);
-    transition: right 1200ms ease;
-}
-#car1.car1move {
-    right: calc(100% - 2rem);
-}
-#car1.car1reset {
-   right:-6rem;
-   transition:none;
-}
-
-/* police car */
-#car2 {
-    z-index: 1;
-    max-height: 4rem;
-    position: absolute;
-    
-    left: 50%;
-    bottom: 2rem;
-    
-    transform: translateX(-50%) rotate(0deg);
-    transition: bottom 1200ms ease;
-}
-#car2.car2move {
-    bottom: calc(100% - 2rem);
-}
-
-/* red car */
-#car3 {
-    z-index: 1;
-    max-height: 4rem;
-    position: absolute;
-
-    left: 2rem;
-    top: 50%;
-
-    transform: translateY(-50%) rotate(90deg);
-    transition: left 1500ms ease;
-}
-#car3.car3move {
-    left: calc(100% - 2rem);
-}
-
-/* taxi car */
-#car4 {
-    z-index: 1;
-    max-height: 4rem;
-    position: absolute;
-
-    left: 50%;
-    top: 2rem;
-
-    transform: translateX(-50%) rotate(180deg);
-    transition: top 1500ms ease;
-}
-#car4.car4move {
-    top: calc(100% - 2rem);
-}

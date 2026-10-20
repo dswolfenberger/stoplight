@@ -1,68 +1,125 @@
 let isIntersectionBusy = false;
 
-const whiteCar = document.getElementById('car1');
-const policeCar = document.getElementById('car2');
-const redCar = document.getElementById('car3');
-const taxiCar = document.getElementById('car4');
+class Stoplight {
+    #light
 
-//logic should be white car clicked, its light is green,
-// so vertical cars will not operate, but when the opposite car is clicked
-//the other operates, because the light associated with its road is green.
-// while horizontal cars operate, vertical cars shouldn't operate.
-//e.g white car is clicked, red car goes after delay unless clicked, it operates.
-// but if the taxi is clicked within Xms don't honor click event, because intersection busy when
-// other cars are operating.
-//Stop light cycle
- 
+    constructor(name, parent) {
+        this.#light = document.createElement("div")        
+        this.#light.id = name
+        this.#light.className = "stoplight " + name
 
-//
-// Car1 - White car listener event
-
-
-whiteCar.addEventListener('click', () => {
-    if (isIntersectionBusy) return;
-    isIntersectionBusy = true;
+        this.commonStyles();
+        if (parent) {
+            parent.appendChild(this.#light)
+        }
+    }
+    /* common light styling */
+    commonStyles() {
+        this.#light.style.position = "absolute"
+        this.#light.style.borderRadius = ".04rem"
+        this.#light.style.zIndex = "2"
+        this.#light.style.background = "#000000"
+        this.#light.style.maxHeight = "3.25rem"
+        this.#light.style.maxWidth = "1rem"
+        this.#light.style.padding = ".3rem"
+    }
     
-    whiteCar.classList.add('car1move');
+    setPosition(x, y) {
+        this.#light.style.left = x + "rem"
+        this.#light.style.top = y + "rem"
+    }
 
-    setTimeout(() => {
-        policeCar.classList.add('car2move');
-    }, 900);
+    /* change light color based on what car is clicked, after delay, 
+    during delay, light = yellow, after delay opposite of what it was before */
+    lightCycle(){
+        addEventListener("???", (event) => {
+            
+        })
+    }
+}
+class Car {
+    #element
+    constructor(name, parent) {
+        this.#element = document.createElement("img")
+        this.#element.id = name
+        this.#element.src = "images/" + name + ".png"
 
-    setTimeout(() => {
-        whiteCar.classList.remove('car1move');
-        policeCar.classList.remove('car2move');
-        isIntersectionBusy = false;
-    }, 3000);
-});
+        this.commonStyles()
 
+        parent.appendChild(this.#element)
+    }
 
-//
-// Police Car listener event
-policeCar.addEventListener('click', (event) => {
-    policeCar.classList.add('car2move');
+    /* common car styling */  
+    commonStyles() {
+        this.#element.style.position = "absolute"
+        this.#element.style.maxHeight = "3.8rem"
+        this.#element.style.zIndex = "1"
+        this.#element.style.transition = "all 1500ms ease"
+    }
 
-    setTimeout(() => {
-        policeCar.classList.remove('car2move');
-    }, 3000);
-});
+    setPosition(x,y) {
+        this.#element.style.left = x + "px"
+        this.#element.style.top = y + "px"
+    }
 
-//
-// Red car listener event
-redCar.addEventListener('click', (event) => {
-    redCar.classList.add('car3move');
+    setRotation(degrees) {
+        this.#element.style.rotate = degrees + "deg"
+    }
 
-    setTimeout(() => {
-        redCar.classList.remove('car3move');
-    }, 3000);
-});
+    doThisWhenClicked(fun) {
+        this.#element.addEventListener("click", fun)
+    }
 
-//
-// Taxi car listener event
-taxiCar.addEventListener('click', (event) => {
-    taxiCar.classList.add('car4move');
+    moveAfterDelay(x, y, delayTime) {
+        setTimeout(() => {
+            this.setPosition(x, y)
+            this.#element.style.transition = "none"
+        }, delayTime)
+    }
 
-    setTimeout(() => {
-        taxiCar.classList.remove('car4move');
-    }, 3000);
-});
+     /* reset the car after click event */
+    resetTransition(){
+        this.#element.style.transition = "all 1500ms ease"
+    }
+}
+const backdrop = document.getElementById("backdrop")
+
+const whiteCar = new Car("car1", backdrop)
+whiteCar.setPosition(585, 265)
+whiteCar.setRotation(270)
+
+whiteCar.doThisWhenClicked(() => {
+    whiteCar.setPosition(-100, 265)
+    whiteCar.moveAfterDelay(585, 265, 2500); 
+    whiteCar.resetTransition()
+})
+
+const policeCar = new Car("car2", backdrop)
+policeCar.setPosition(328, 570)
+policeCar.setRotation(0)
+
+policeCar.doThisWhenClicked(() => {
+    policeCar.setPosition(328, -100) 
+    policeCar.moveAfterDelay(328, 570, 2500)
+    policeCar.resetTransition()
+})
+
+const redCar = new Car("car3", backdrop)
+redCar.setPosition(20, 315)
+redCar.setRotation(-270)
+
+redCar.doThisWhenClicked(() => {
+    redCar.setPosition(700, 315)
+    redCar.moveAfterDelay(20, 315, 2500)
+    redCar.resetTransition()
+})
+
+const taxiCar = new Car("car4", backdrop)
+taxiCar.setPosition(275, 10)
+taxiCar.setRotation(180)
+
+taxiCar.doThisWhenClicked(() => {
+    taxiCar.setPosition(275, 720)
+    taxiCar.moveAfterDelay(275, 10, 2500)
+    taxiCar.resetTransition()
+})
